@@ -1,4 +1,4 @@
-Param (
+ Param (
     [Parameter(Mandatory = $false)]
     [string] $module,
 
@@ -189,7 +189,7 @@ function Get-ScriptFiles {
     Write-Output "[+] Gathering list of Script files in TEMP locations ..."
     $outputFile = Join-Path $Global:irPath "\${ComputerName}_ScriptFiles.csv"
 
-    $PEExtPattern = ".bat|.vbs|.cmd|.js|.com|.ps1|.psm|.psm1|.psd|.txt"
+    $PEExtPattern = ".bat|.vbs|.cmd|.js|.com|.ps1|.psm|.psm1|.psd"
     $filePaths = @(
         "${env:TEMP}\*",
         "${env:USERPROFILE}\Downloads\*",
@@ -410,6 +410,10 @@ if ($module) {
         $Global:irPath = $folder
     }
     else {
+        # fix output directory if not provided
+        if (-Not (Test-Path c:\Windows\Temp\IR)) {
+            New-Item -Path  c:\Windows\Temp\IR -Type Directory -Force | Out-Null
+        }
         $Global:irPath = "C:\Windows\Temp\IR"
     }
 
@@ -437,4 +441,4 @@ if ($module) {
 else {
     usage
     exit
-}
+} 
