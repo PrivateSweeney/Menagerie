@@ -1,6 +1,6 @@
 # Menagerie
 
-A CrowdStrike Response script for doing simple initial triage and data collection from a system (autorun information, installedsoftware, files and hashes, etc..)
+A CrowdStrike Response script for doing simple initial triage and data collection from a system (autorun information, installed software, files and hashes, etc..)
 
 ## Setup
 Create a new script via `Configuration` -> `Response Scripts & Files` and name it Menagerie
